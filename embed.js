@@ -20,15 +20,6 @@ function createRow(text) {
 
 }
 
-function getTopics(){
-  text = $('#input-topics').val();
-  topics = text.split('--');
-  for (let index = 0; index < topics.length; index++) {
-    topics[index] = encodeURIComponent(topics[index]);
-  }
-  return topics;
-}
-
 function submitInput() {
   var inputData = {
     'text': $input.val(),
