@@ -11,13 +11,12 @@ var $chatlog = $('.js-chat-log');
 var $input = $('.js-text');
 var $sayButton = $('.js-say');
 
-function createRow(text) {
-  var $row = $('<li class="list-group-item"></li>');
-
+function createRow(text,isUser) {
+  var $row;
+  isUser ? $row = $('<div class="card p-2 mr-1 mb-2" style="width: max-content; max-width:70%; margin-left:auto; margin-right:0;"></div>') : $row = $('<div class="card p-2 mr-2 mb-2" style="width: max-content; max-width:70%;"></div>');
   $row.html(text);
   $chatlog.append($row);
   $(".btn-info").html('Enviar');
-
 }
 
 function submitInput() {
@@ -26,7 +25,7 @@ function submitInput() {
     'topics': embed_topics,
   }
 
-  createRow(inputData.text);
+  createRow(inputData.text,1);
 
   var $submit = $.ajax({
     type: 'POST',
